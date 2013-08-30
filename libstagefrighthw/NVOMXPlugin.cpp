@@ -35,7 +35,9 @@ NVOMXPlugin::NVOMXPlugin()
       mGetHandle(NULL),
       mFreeHandle(NULL),
       mGetRolesOfComponentHandle(NULL) {
+  
     if (mLibHandle != NULL) {
+        ALOGD("NVOMXPlugin: Loaded library");
         mInit = (InitFunc)dlsym(mLibHandle, "OMX_Init");
         mDeinit = (DeinitFunc)dlsym(mLibHandle, "OMX_Deinit");
 
@@ -50,6 +52,9 @@ NVOMXPlugin::NVOMXPlugin()
                     mLibHandle, "OMX_GetRolesOfComponent");
 
         (*mInit)();
+    }
+    else{
+      ALOGE("NVOMXPlugin: %s", dlerror());
     }
 }
 
