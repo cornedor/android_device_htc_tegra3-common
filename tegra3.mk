@@ -51,6 +51,9 @@ PRODUCT_PACKAGES += \
     pollyd
 
 PRODUCT_PACKAGES += \
+    Tegra3Parts
+
+PRODUCT_PACKAGES += \
     hostapd_cli \
     calibrator
 
